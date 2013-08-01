@@ -1,4 +1,4 @@
-all: run Heaps.class
+all: run Heaps.class ProblemReader.class
 
 .PHONY: run
 
