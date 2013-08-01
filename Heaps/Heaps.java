@@ -21,12 +21,12 @@ class Heaps {
     }
 
     int[][] calcFoldCost(int nheaps) {
-        // Calculate all possible fold costs for assembling nheaps heaps
+        // Calculate all necessary fold costs for assembling nheaps heaps
         int[][] cost = new int[sites-1][];
         for(int ii=0; ii<sites-1; ii++) {
             // *Can't fold past the last site
-            // *Will never fold such that I can't get the required number of
-            // heaps
+            // *Will never fold so many sites that I can't get the required 
+            // number of heaps
             int maxfold = Math.min(sites-ii-1, sites-nheaps);
             cost[ii] = new int[maxfold+1];
             cost[ii][0] = 0;
@@ -61,30 +61,27 @@ class Heaps {
                 max_heaps--;
             }
             // Solve the subproblem for each possible number of heaps desired
+            // I can't assemble less than 1 heap
+            // I also don't need to assemble less than nheaps-current_site
+            // heaps
             for(int heaps = Math.max(1,nheaps-current_site); 
                     heaps <= max_heaps; heaps++) {
-                // Select the minimum cost out of:
-                // - skipping this site (only an option if heaps != 1)
-                // - taking this site's heap to the next site
-                // - taking this site and the next side's heaps to the
-                // following one
-                // - ...
-                // - taking all the heaps from the next (sites_left-heaps)
-                // sites to the next.
+                // Select the minimum cost out of folding "loads" sites
+                // for 0 <= loads <= sites_left-heaps
                 //
-                // The cost of each option is the cost of the barge
-                // operation plus the cost of doing the rest of the heaps
+                // The cost of each option is the cost of this fold
+                // operation plus the cost of assembling the remaining heaps
                 // (which is a subproblem I've already solved)
                 if(heaps == 1) {
                     // Gotta take all the heaps to the last site
-                    subproblem[sites_left][heaps] = foldCost[current_site][sites_left-1];
+                    subproblem[sites_left][heaps] = foldCost[current_site]
+                                                            [sites_left-1];
                     continue;
                 }
                 int mincost = Integer.MAX_VALUE;
-                // Calculate the cost of 1..(sites_left-heaps) loads
                 for(int loads=0; loads <= sites_left - heaps; loads++) {
                     int newcost = foldCost[current_site][loads]
-                        + subproblem[sites_left-loads-1][heaps-1];
+                                + subproblem[sites_left-loads-1][heaps-1];
                     mincost = Math.min(mincost, newcost);
                 }
                 subproblem[sites_left][heaps] = mincost;
