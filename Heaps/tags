@@ -1,0 +1,15 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Heaps	Heaps.java	/^class Heaps {$/;"	c
+Problem	Heaps.java	/^        public Problem(int[] _distance, int[] _weight) {$/;"	m	class:Heaps.Problem
+Problem	Heaps.java	/^    static class Problem {$/;"	c	class:Heaps
+distance	Heaps.java	/^        int[] distance;$/;"	f	class:Heaps.Problem
+main	Heaps.java	/^    public static void main(String[] argv) {$/;"	m	class:Heaps
+sites	Heaps.java	/^        int sites;$/;"	f	class:Heaps.Problem
+solve	Heaps.java	/^        public int solve(int nheaps) {$/;"	m	class:Heaps.Problem
+subproblem	Heaps.java	/^        int[][] subproblem;$/;"	f	class:Heaps.Problem
+weight	Heaps.java	/^        int[] weight;$/;"	f	class:Heaps.Problem
