@@ -9,7 +9,7 @@ int randint(int max) {
 
 int main(int argc, char *argv[]) {
 
-    int sites = 1000;
+    const int sites = 1000;
     cost weight[sites];
     int distance[sites];
     for(int site = 0; site<sites; site++) {
@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
     if(clock_gettime(CLOCK_THREAD_CPUTIME_ID, &start) != 0) {
         perror("Timing start");
     }
-    Heaps(sites, weight, distance).solve(300);
+    Heaps(sites, weight, distance).solve(400);
     if(clock_gettime(CLOCK_THREAD_CPUTIME_ID, &end) != 0) {
         perror("Timing end");
     }

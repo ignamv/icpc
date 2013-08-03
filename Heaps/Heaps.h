@@ -21,13 +21,12 @@ class Heaps {
         cost *temp;
         int sites;
 
-        void calcFolds(unsigned int heaps);
-        inline cost foldCost(unsigned int initial, unsigned int length);
-        inline cost solveSubproblem(unsigned int sites, unsigned int heaps);
+        void calcFolds(int heaps);
+        cost solveSubproblem(int sites, int heaps);
     public:
-        Heaps(unsigned int sites, cost weight[], dist distance[]);
+        Heaps(int sites, cost weight[], dist distance[]);
         
-        cost solve(unsigned int heaps);
+        cost solve(int heaps);
 };
 
 #endif

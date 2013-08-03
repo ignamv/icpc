@@ -1,19 +1,4 @@
 #include "Dijkstra.h"
-Heaps::State Heaps::load(Heaps::State s) {
-    return Heaps::State(s.site+1,s.bargeLoad+weight[s.site], s.heaps); 
-}
-bool Heaps::canLoad(Heaps::State s) {
-    return sites-s.site > s.heaps; 
-}
-bool Heaps::canUnload(Heaps::State s) {
-    return s.heaps > 1; 
-}
-cost Heaps::loadCost(Heaps::State s) {
-    return s.bargeLoad * distance[s.site-1]; 
-}
-Heaps::State Heaps::unload(Heaps::State s) {
-    return Heaps::State(s.site+1,0 , s.heaps-1); 
-}
 
 Heaps::Heaps(unsigned int _sites, cost *_weight, unsigned int *_distance):
     sites(_sites),
@@ -32,6 +17,7 @@ cost Heaps::solve(unsigned int heaps) {
         cost c = pair.first;
         if(current.site == sites-1)
             return c;
+        if(current.
         if(canLoad(current)) {
             State sload = load(current);
             if(visited.find(sload) == visited.end())

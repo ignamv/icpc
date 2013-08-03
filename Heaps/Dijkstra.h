@@ -10,13 +10,11 @@ class Heaps {
         class State {
             public:
                 unsigned int site;
-                cost bargeLoad;
                 unsigned int heaps;
-                State(unsigned int _site, cost _bargeLoad, unsigned int _heaps):
-                    site(_site), bargeLoad(_bargeLoad), heaps(_heaps) {}
+                State(unsigned int _site,  unsigned int _heaps):
+                    site(_site), heaps(_heaps) {}
                 bool operator< (const State y) const {
                     return site != y.site ? site < y.site
-                         : bargeLoad != y.bargeLoad ? bargeLoad < y.bargeLoad
                          : heaps < y.heaps;
                 }
         };
@@ -25,14 +23,9 @@ class Heaps {
                 State s;
                 dist d;
                 bool operator< (DistState y) {
-                    return d< y.d;
+                    return d < y.d;
                 }
         };
-        State load(State);
-        bool canLoad(State);
-        bool canUnload(State);
-        cost loadCost(State);
-        State unload(State);
         cost *weight;
         dist *distance;
         int sites;
