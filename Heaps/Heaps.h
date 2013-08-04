@@ -29,5 +29,5 @@ class Heaps {
         cost solve(int heaps);
 };
 
-#endif
+#endif // HEAPS_H
 
